@@ -1,33 +1,25 @@
 service.LanguagePreferenceManager
 =================================
-
-A manager for audio and subtitle preferences
+音频与字幕偏好管理器
 ============================================
+本插件提供便捷方式，用于在 Kodi 中设置首选音频流和字幕语言。
+你可以按优先级选择要自动启用的音轨和字幕，并通过下拉列表设置简单条件规则，例如“若音频为xxx，则启用yyy字幕”。
+也可以定义更高级的自定义规则（语法详见更新日志。请注意：自定义规则优先级始终高于其他规则）。
 
-This addon provides an easy way to set your preferred audio streams and subtitle languages in Kodi.
+在普通或自定义的条件字幕规则中，可以使用特殊语言代码：字幕用 None(non)，音频用 Any(any)。
+例如 "fre:non>any:fre>any:eng" 代表：音频为法语时关闭字幕（存在法语强制字幕轨的情况除外）；其他任意音频语言时启用法文字幕。如果以上都不可用，则尝试加载英文字幕。
 
-You can select which audio tracks and subtitles to automatically activate based on your priorities, and define simple conditional rules like "if audio is xxx then activate subtitles yyy" via drop/down lists.
-More advanced custom rules can be defined as well (see changelog for more on the syntax. Note that custom rules always take precedence over others).
+从 v0.1.5 版本开始，在播放过程中切换音频时，会重新解析并应用规则。
 
-Special language codes None(non) for subtitles and Any(any) for audio can be used in Conditional Subtitles Rules, normal or custom.
-For example "fre:non>any:fre>any:eng" will disable subtitles if audio is French (except if a french forced subtitles track exists) and activate french subtitles for any other audio language. If these are not available it will try the same finding english subtitles.
+现在还可以在偏好判定中，按名称强制忽略“标识与歌曲字幕”，也可通过预设关键词忽略其他字幕轨道。
+例如，大多数双音轨动漫配有英、日两条音轨和两套英文字幕。一套完整对白字幕，用于搭配日语音频；另一套标识/歌曲字幕，仅翻译画面歌词与标牌文字，用于搭配英文音轨。旧版插件只会选取第一条语言匹配的字幕，经常选错。
 
-Rules are re-evaluated and applied whenever you switch audio while watching (from v0.1.5).
+从 v1.0.6 版本开始，可以为每部电影 / 剧集保存强制偏好。播放期间手动更改音轨和/或字幕轨道时，该设置将保存为覆盖偏好；下次打开该电影，或播放该剧集下一集时，会优先采用该配置（非常感谢 SgtJalau！）
 
-It's now also possible to force ignore "Signs and Songs" subtitles in preferences evaluations, based on name, and/or any other subtitle tracks based on predefined keywords.
-For example, most dual audio Anime provides english and japanese audio and two english subtitles. Dialogue subtitles with all the dialogue to go with the japanese audio and Song/Sign subtitles which only translate song lyrics and signs you see on screen to be used with the english audio stream. Previously the addon just picked the first subtitles with the correct language which weren't always the correct ones.
-
-An option allows you to store forced preferences per Movie / TVshow (from v1.0.6). When you manually change audio and/or subtitle tracks during play, this will be saved as an overriding preference, taking precedence over all other rules for the next opening of the Movie, or the next episode of the TVshow (Thx a lot to SgtJalau!)
-
-Special Thanks
+特别致谢
 ==============
-
-- @ace20022 and @scott967 for initial development
-
-- @cyberden for making this addon ready for Kodi Matrix
-
-- @fpatrick for fixing an issue with language mapping
-
-- @KnappeGEIL for ideas how to ignore 'Signs and Songs' subtitles
-
-- @SgtJalau for the complete feature to store specific/overriding preferences per Movie / TVshow
+- @ace20022 and @scott967：初始开发
+- @cyberden：适配 Kodi Matrix 版本
+- @fpatrick：修复语言映射相关问题
+- @KnappeGEIL：提出忽略“标识与歌曲字幕”的功能思路
+- @SgtJalau：开发整套电影/剧集专属覆盖偏好功能
